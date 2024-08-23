@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ContaCorrenteAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f30a4b3f314741d723eeb599e646f31bde2b71cb")]
 [assembly: System.Reflection.AssemblyProductAttribute("ContaCorrenteAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ContaCorrenteAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,4 +1,5 @@
 namespace ContaCorrenteAPI.Models
+// Criação das variáveis de acordo com o banco de dado.
 {
     public class Cliente
     {

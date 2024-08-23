@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using ContaCorrenteAPI.Models;
 
 namespace ContaCorrenteAPI.Data
+// Montando o banco de dados de contexto , onde serão atualizados.
 {
     public class ContaCorrenteContext : DbContext
     {

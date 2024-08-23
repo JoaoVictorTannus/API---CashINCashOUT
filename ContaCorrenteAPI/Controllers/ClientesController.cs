@@ -4,23 +4,24 @@ using ContaCorrenteAPI.Data;
 using ContaCorrenteAPI.Models;
 
 namespace ContaCorrenteAPI.Controllers
+// Chamando as APIS , e ASPNET.
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ClientesController : ControllerBase
+    public class ClientesController : ControllerBase // Criação de classe de Controle
     {
         private readonly ContaCorrenteContext _context;
 
-        public ClientesController(ContaCorrenteContext context)
+        public ClientesController(ContaCorrenteContext context) 
         {
             _context = context;
         }
  
-        // GET: api/Clientes/{id}/Saldo
-        [HttpGet("{id}/Saldo")]
-        public async Task<ActionResult<decimal>> GetSaldo(int id)
+        // Consulta de saldo
+        [HttpGet("Consulta de saldo")]
+        public async Task<ActionResult<decimal>> GetSaldo(int id) // // Preenchimento e busca de ID do cliente desejado
         {
-            var cliente = await _context.Clientes.FindAsync(id);
+            var cliente = await _context.Clientes.FindAsync(id); // Procura pelo id preenchido do cliente a se Consultar
             if (cliente == null)
             {
                 return NotFound();
@@ -28,11 +29,11 @@ namespace ContaCorrenteAPI.Controllers
             return cliente.Saldo;
         }
 
-    // Método para obter um cliente por ID
-    [HttpGet("{id}")]
-    public async Task<IActionResult> GetClienteById(int id)
+    // Consulta de clientes por id
+    [HttpGet("Consulta de Clientes por ID")]
+    public async Task<IActionResult> GetClienteById(int id) // // Preenchimento e busca de ID do cliente desejado
     {
-        var cliente = await _context.Clientes.FindAsync(id);
+        var cliente = await _context.Clientes.FindAsync(id); // Procura pelo id preenchido do cliente a se Consultar
 
         if (cliente == null)
         {
@@ -42,37 +43,32 @@ namespace ContaCorrenteAPI.Controllers
         return Ok(cliente);
     }
 
-    // Método para gerar um número de conta único
-    private string GenerateUniqueAccountNumber()
-    {
-        return Guid.NewGuid().ToString().Replace("-", "").Substring(0, 10).ToUpper();
-    }
-        // POST: api/Clientes/{id}/Credito
-        [HttpPost("{id}/Credito")]
-        public async Task<IActionResult> Credito(int id, [FromBody] decimal valor)
+        // Creditação de clientes.
+        [HttpPost("Creditação")] // Cartão de visualização
+        public async Task<IActionResult> Credito(int id, [FromBody] decimal valor) // Preenchimento e busca de ID
         {
-            var cliente = await _context.Clientes.FindAsync(id);
+            var cliente = await _context.Clientes.FindAsync(id); // Procura pelo id preenchido do cliente a se Creditar
             if (cliente == null)
             {
                 return NotFound();
             }
-
+        // Processo de Creditação
             cliente.Saldo += valor;
             await _context.SaveChangesAsync();
 
             return Ok(cliente);
         }
 
-        // POST: api/Clientes/{id}/Debito
-        [HttpPost("{id}/Debito")]
-        public async Task<IActionResult> Debito(int id, [FromBody] decimal valor)
+        // Debitação de clientes.
+        [HttpPost("Debitação")] // Cartão de visualização.
+        public async Task<IActionResult> Debito(int id, [FromBody] decimal valor) // Preenchimento e busca de ID
         {
-            var cliente = await _context.Clientes.FindAsync(id);
+            var cliente = await _context.Clientes.FindAsync(id); // Procura pelo id preenchido do cliente a se Debitar
             if (cliente == null)
             {
                 return NotFound();
             }
-
+        // Processo de debitação
             if (cliente.Saldo < valor)
             {
                 return BadRequest("Saldo insuficiente.");

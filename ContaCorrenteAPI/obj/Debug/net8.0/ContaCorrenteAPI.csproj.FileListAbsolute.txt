@@ -140,3 +140,4 @@ C:\API\ContaCorrenteAPI\bin\Debug\net8.0\xunit.abstractions.dll
 C:\API\ContaCorrenteAPI\bin\Debug\net8.0\xunit.assert.dll
 C:\API\ContaCorrenteAPI\bin\Debug\net8.0\xunit.core.dll
 C:\API\ContaCorrenteAPI\bin\Debug\net8.0\xunit.execution.dotnet.dll
+C:\API\ContaCorrenteAPI\obj\Debug\net8.0\ContaCorrenteAPI.sourcelink.json

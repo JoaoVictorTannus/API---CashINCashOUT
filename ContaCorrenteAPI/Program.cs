@@ -5,12 +5,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-// Add services to the container.
+// Adicionando a api ao banco de dados
 builder.Services.AddControllers();
 builder.Services.AddDbContext<ContaCorrenteContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 var app = builder.Build();
-// Configure the HTTP request pipeline.
+// Configuração do swagger/http para acesso web.
 
 if (app.Environment.IsDevelopment())
 {
